@@ -30,7 +30,7 @@ const displayAllNews = (allNews) => {
     const sectionFound = document.getElementById('section-found');
     sectionFound.classList.remove('d-none');
     const itemFound = document.getElementById('item-found');
-    itemFound.innerHTML = `<h4> ${allNews.length} items found for category</h4>`;
+    itemFound.innerHTML = `<h4> ${allNews.length ? allNews.length + ' items found for category' : 'No News found'}</h4>`;
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
@@ -100,12 +100,16 @@ const displayNewsDetails = (newsDetail) => {
                     </div>
                 </div>
                 <div class="fw-bold">
-                    <p>${total_view}.M Views</p>
+                    <p>${total_view ? total_view + '.M Views' : 'No data'}</p>
                 </div>
                 <div class="">
                     <p>${rating.badge}</p>
                     <p>${rating.number} star</p>
                 </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p class="fw-bold">${others_info.is_todays_pick === true ? 'todays pick' : 'todays is not pick'}</p>
+                <p>${others_info.is_trending === true ? "It's trending" : "This is not trending"}</p>
             </div>
             </div>
         </div>
