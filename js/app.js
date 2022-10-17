@@ -29,7 +29,6 @@ const displayAllNews = (allNews) => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
-        console.log(news)
         const newsDiv = document.createElement('div');
         newsDiv.classList.add("col-12");
         newsDiv.innerHTML = `
@@ -47,14 +46,15 @@ const displayAllNews = (allNews) => {
                                         <img style="width: 60px; height: 60px" class="rounded-5" src="${news.author.img}" alt=""/>
                                         <div class="ms-2">
                                             <p class="fw-bold">${news.author.name ? news.author.name : 'No Data Available'}</p>
-                                            <p>${news.author.published_date}</p>
+                                            <p>${news.author.published_date ? news.author.published_date : 'No Date Available'}</p>
                                         </div>
                                     </div>
                                     <div>
                                         <p class="fw-bold">${news.total_view ? news.total_view + '.M Views' : 'No Data Available'}</p>
                                     </div>
                                     <div class="">
-                                        <button class="btn btn-primary">News Details</button>
+                                        <button onclick="loadNewsDetails('${news._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">
+                                        News Details</button>
                                     </div> 
                             </div>
                         </div>
@@ -64,6 +64,45 @@ const displayAllNews = (allNews) => {
         `;
         newsContainer.appendChild(newsDiv);
     });
+};
+
+const loadNewsDetails = (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayNewsDetails(data.data[0]))
+        .catch(err => console.log(err))
+};
+
+const displayNewsDetails = (newsDetail) => {
+    console.log(newsDetail);
+    const { author, category_id, others_info, rating, total_view, _id, thumbnail_url, title, details } = newsDetail;
+    const modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = `
+        <div class="card mb-3">
+            <img src="${thumbnail_url}" class="card-img-top" alt="">
+            <div class="card-body">
+            <h5 class="card-title">${title}.</h5>
+            <p class="card-text"><span class="fw-bold">News Description</span>: ${details}</p>
+            <div class="d-sm-block d-md-flex justify-content-around">
+                <div class="d-flex">
+                    <img  style="width: 60px; height: 60px" class="rounded-5" src="${author.img}" alt="" />
+                    <div class="ms-2">
+                        <p class="fw-bold">${author.name ? author.name : 'No Data Available'}</p>
+                        <p>${author.published_date}</p>
+                    </div>
+                </div>
+                <div class="fw-bold">
+                    <p>${total_view}.M Views</p>
+                </div>
+                <div class="">
+                    <p>${rating.badge}</p>
+                    <p>${rating.number} star</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    `;
 }
 
 loadNewsData();
