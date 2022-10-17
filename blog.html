@@ -40,7 +40,49 @@
         </nav>
     </header>
     <section class="container">
-        <h1>blog</h1>
+        <div>
+            <h1>1. Difference of let var const</h1>
+            <li>var declarations are globally scoped or function scoped while let and const are block scoped.</li>
+            <li>var variables can be updated and re-declared within its scope; let variables can be updated but not
+                re-declared; const variables can neither be updated nor re-declared.</li>
+            <li>They are all hoisted to the top of their scope. But while var variables are initialized with undefined,
+                let and const variables are not initialized.</li>
+            <li>While var and let can be declared without being initialized, const must be initialized during
+                declaration.</li>
+        </div>
+        <div>
+            <h1>2. arrow function vs regular function</h1>
+            <li> Syntax: let add = (a, b) => a + b; </li>
+            <li> Arguments binding: object inside the regular functions contains the list of arguments.</li>
+            <li> Use of this keyword: Inside of a regular JavaScript function, this value is dynamic. The dynamic
+                context means that the value of this depends on how the function is invoked.The behavior of this inside
+                of an arrow, function differs considerably from the regular function’s this behavior as an arrow
+                function does not have its own “this” keyword.</li>
+            <li> Using a new keyword: Regular functions are constructible and callable. They can be called using the new
+                keyword. But, the arrow functions are only callable and not constructible, i.e., arrow functions can
+                never be used as constructor functions.</li>
+        </div>
+        <div>
+            <h1>3. map foreach and filter difference in javascript</h1>
+            <li>1. Foreach: Foreach takes a callback function and run that callback function on each element of array
+                one by one. Basically forEach works as a traditional for loop looping over the array and providing you
+                array elements to do operations on them.</li>
+            <li>2. Filter: The main difference between forEach and filter is that forEach just loop over the array and
+                executes the callback but filter executes the callback and check its return value.Also take notice
+                filter does not update the existing array it will return a new filtered array every time. </li>
+            <li>3. Map: Map like filter & foreach takes a callback and run it against every element on the array but
+                whats makes it unique is it generate a new array based on your existing array.The provided callback to
+                map modifies the array elements and save them into the new array upon completion that array get returned
+                as the mapped array.</li>
+            <li>4. Find: This method returns first element of the array that satisfies the condition specified in the
+                callback function.</li>
+        </div>
+        <div>
+            <h1>4.how we use templete string</h1>
+            <li>In ES6, we can now use template strings. I like to use these multiline strings when I'm creating HTML
+                markup as a string. You can use backticks here, and use the object properties as variables. These look
+                familiar because they're in the same format as I've been using in some of the previous posts.</li>
+        </div>
     </section>
 </body>
 
