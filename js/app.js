@@ -46,12 +46,12 @@ const displayAllNews = (allNews) => {
                                     <div class="d-flex">
                                         <img style="width: 60px; height: 60px" class="rounded-5" src="${news.author.img}" alt=""/>
                                         <div class="ms-2">
-                                            <p class="fw-bold">${news.author.name}</p>
+                                            <p class="fw-bold">${news.author.name ? news.author.name : 'No Data Available'}</p>
                                             <p>${news.author.published_date}</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="fw-bold">${news.total_view}.M Views</p>
+                                        <p class="fw-bold">${news.total_view ? news.total_view + '.M Views' : 'No Data Available'}</p>
                                     </div>
                                     <div class="">
                                         <button class="btn btn-primary">News Details</button>
