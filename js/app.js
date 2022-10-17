@@ -9,7 +9,6 @@ const loadNewsData = () => {
 const displayCategoriesData = (categories) => {
     const categoriesContainer = document.getElementById('categories-container');
     categories.forEach(category => {
-        // console.log(category);
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add("col");
         categoryDiv.innerHTML = `<div class="p-1 border bg-info" onclick="loadAllNewsCategory('${category.category_id}')">${category.category_name}</div>`;
@@ -28,6 +27,10 @@ const loadAllNewsCategory = (category_id) => {
 };
 
 const displayAllNews = (allNews) => {
+    const sectionFound = document.getElementById('section-found');
+    sectionFound.classList.remove('d-none');
+    const itemFound = document.getElementById('item-found');
+    itemFound.innerHTML = `<h4> ${allNews.length} items found for category</h4>`;
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     allNews.forEach(news => {
