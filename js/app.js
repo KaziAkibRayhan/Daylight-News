@@ -82,7 +82,6 @@ const loadNewsDetails = (news_id) => {
 };
 
 const displayNewsDetails = (newsDetail) => {
-    console.log(newsDetail);
     const { author, category_id, others_info, rating, total_view, _id, thumbnail_url, title, details } = newsDetail;
     const modalBody = document.getElementById('modalBody');
     modalBody.innerHTML = `
@@ -110,6 +109,10 @@ const displayNewsDetails = (newsDetail) => {
             <div class="d-flex justify-content-between">
                 <p class="fw-bold">${others_info.is_todays_pick === true ? 'todays pick' : 'todays is not pick'}</p>
                 <p>${others_info.is_trending === true ? "It's trending" : "This is not trending"}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>News ID: ${_id}</p>
+                <p class="fw-bold"> Category ID: ${category_id}</p>
             </div>
             </div>
         </div>
