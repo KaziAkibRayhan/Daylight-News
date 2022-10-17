@@ -11,7 +11,7 @@ const displayCategoriesData = (categories) => {
     categories.forEach(category => {
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add("col");
-        categoryDiv.innerHTML = `<div class="p-1 border bg-info" onclick="loadAllNewsCategory('${category.category_id}')">${category.category_name}</div>`;
+        categoryDiv.innerHTML = `<div class="p-2 border text-white bg-info" onclick="loadAllNewsCategory('${category.category_id}')">${category.category_name}</div>`;
         categoriesContainer.appendChild(categoryDiv);
     });
 };
